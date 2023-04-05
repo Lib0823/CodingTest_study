@@ -1,4 +1,5 @@
-# 학습 json파일 형식{"user": "...", "ai": "..."}
+# 학습 json파일 형식 [{"user": "...", "ai": "..."}, {"user": "...", "ai": "..."}]
+# json형식으로 데이터를 입력하고 list형식으로 감싸줘야 형변환 문제가 발생하지 않는다.
 
 import openai
 import json
@@ -22,6 +23,9 @@ def train_gpt2(chat_data):
         # 사용자의 입력과 모델이 생성한 응답을 하나의 프롬프트로 합침
         prompt += f"User: {chat['user']}\nAI: {chat['ai']}\n"
 
+     # 새로운 대화 추가
+    prompt += f"User: {chat_data[-1]['ai']}\nAI: "
+    
     # GPT-2 API를 사용하여 학습을 진행
     response = openai.Completion.create(
         engine=model_engine,
