@@ -1,6 +1,6 @@
 import os
 import openai
-openai.api_key = "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"  # OpenAI API key 설정
+openai.api_key = ""  # OpenAI API key 설정
 
 prompt = "Hello, what is your name?"  # 입력으로 사용될 프롬프트
 temperature = 0.7  # 다양성 조절을 위한 옵션. 기본값은 0.5입니다.
